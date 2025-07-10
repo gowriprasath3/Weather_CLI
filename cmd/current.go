@@ -15,7 +15,6 @@ var currentCmd = &cobra.Command{
 	Short: "get the current weather",
 	Run: func(cmd *cobra.Command, args []string) {
 		const API_KEY = "07604ddd4e0764404025c9e293c62868"
-		// loc := args[0]
 		log.Print("getting weather for the location: ", city)
 		client := resty.New()
 		url := fmt.Sprintf("https://api.openweathermap.org/data/2.5/weather?q=%s&appid=%s", city, API_KEY)
@@ -28,7 +27,6 @@ var currentCmd = &cobra.Command{
 }
 
 func init() {
-	log.Println("init current cmd...")
 	currentCmd.Flags().StringVarP(&city, "city", "c", "", "City to fetch weather for")
 	currentCmd.MarkFlagRequired("city")
 }
